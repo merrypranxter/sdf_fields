@@ -1,0 +1,9 @@
+{
+  "operations": [
+    { "id": "boolean", "path": "operations/boolean.json" },
+    { "id": "smooth_boolean", "path": "operations/smooth_boolean.json" },
+    { "id": "repetition", "path": "operations/repetition.json" },
+    { "id": "transform", "path": "operations/transform.json" },
+    { "id": "deformation", "path": "operations/deformation.json" }
+  ]
+}

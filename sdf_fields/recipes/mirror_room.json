@@ -1,0 +1,54 @@
+{
+  "id": "mirror_room",
+  "description": "Non-Euclidean mirror room using modular space repetition. Infinite reflections without actual ray bouncing.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "sphere",
+        "preset": "sphere_unit"
+      },
+      {
+        "type": "box",
+        "preset": "box_cube",
+        "role": "room"
+      }
+    ],
+    "operations": [
+      {
+        "type": "repetition",
+        "preset": "repeat_grid",
+        "period": [
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "type": "subtraction",
+        "notes": "Subtract room interior from solid space to create walls"
+      }
+    ]
+  },
+  "style_tags": [
+    "mirror room",
+    "non-euclidean",
+    "infinite",
+    "surreal",
+    "Escher",
+    "recursive space",
+    "liminal"
+  ],
+  "example_prompts": [
+    "create non-Euclidean mirror room using modular space repetition",
+    "build infinite recursive room with an object repeated in every cell",
+    "compose liminal surreal space using mod-based coordinate folding"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "interior",
+      "notes": "Camera inside one cell"
+    },
+    "lighting": "point light per cell + fog",
+    "notes": "mod(p, roomSize) - 0.5 * roomSize for coordinate wrapping. Add slight fog for depth."
+  }
+}

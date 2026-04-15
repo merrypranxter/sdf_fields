@@ -1,0 +1,93 @@
+{
+  "id": "mandelbulb",
+  "display_name": "Mandelbulb Fractal",
+  "mathematical_definition": "3D fractal extending the Mandelbrot set using spherical coordinates for the power operation. Iterated: z = z^power + c with distance estimated via 0.5 * log(r) * r / dr.",
+  "dimension": 3,
+  "parameters": {
+    "power": {
+      "type": "float",
+      "min": 2.0,
+      "max": 16.0,
+      "default": 8.0
+    },
+    "iterations": {
+      "type": "int",
+      "min": 2,
+      "max": 20,
+      "default": 8
+    },
+    "bailout": {
+      "type": "float",
+      "min": 1.5,
+      "max": 10.0,
+      "default": 2.0
+    }
+  },
+  "visual_keywords": [
+    "fractal",
+    "organic",
+    "alien",
+    "infinite detail",
+    "recursive",
+    "cosmic",
+    "eldritch"
+  ],
+  "good_for": [
+    "hero objects",
+    "fractal landscapes",
+    "alien organisms",
+    "cosmic structures",
+    "psychedelic centerpieces"
+  ],
+  "art_failure_modes": [
+    "EXPENSIVE \u2014 many iterations per ray step. Use sparingly or with LOD.",
+    "Distance estimate is approximate \u2014 reduce step size multiplier to 0.5 or lower.",
+    "High powers (>12) produce near-spherical shapes with surface noise \u2014 less interesting.",
+    "Low iterations produce blobby approximations, not crisp fractals."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "mandelbulb_classic",
+      "power": 8.0,
+      "iterations": 10,
+      "bailout": 2.0,
+      "style_tags": [
+        "classic mandelbulb",
+        "fractal",
+        "iconic"
+      ]
+    },
+    {
+      "id": "mandelbulb_low_power",
+      "power": 3.0,
+      "iterations": 12,
+      "bailout": 2.0,
+      "style_tags": [
+        "blobby",
+        "organic",
+        "alien growth"
+      ]
+    },
+    {
+      "id": "mandelbulb_high_power",
+      "power": 12.0,
+      "iterations": 8,
+      "bailout": 2.0,
+      "style_tags": [
+        "spiky",
+        "detailed",
+        "noisy surface"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "very high",
+    "branching": "loop",
+    "iterations": "8-20 per SDF eval",
+    "notes": "Use 0.5x step multiplier. Limit max ray steps to 100-150."
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "id": "cylinder",
+  "display_name": "Cylinder / Capped Cylinder",
+  "mathematical_definition": "Infinite cylinder: length(p.xz) - radius. Capped variant clamps height and combines radial and vertical distances.",
+  "dimension": 3,
+  "parameters": {
+    "radius": {
+      "type": "float",
+      "min": 0.01,
+      "max": 50.0,
+      "default": 0.5
+    },
+    "height": {
+      "type": "float",
+      "min": 0.01,
+      "max": 100.0,
+      "default": 2.0
+    },
+    "capped": {
+      "type": "bool",
+      "default": true
+    }
+  },
+  "visual_keywords": [
+    "tube",
+    "pillar",
+    "rod",
+    "pipe",
+    "trunk"
+  ],
+  "good_for": [
+    "pillars",
+    "pipes",
+    "tree trunks",
+    "tunnels",
+    "tubes"
+  ],
+  "art_failure_modes": [
+    "Infinite cylinders need careful camera placement to avoid boring views.",
+    "Cap edges can look harsh \u2014 add rounding."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "cylinder_pillar",
+      "radius": 0.3,
+      "height": 4.0,
+      "style_tags": [
+        "pillar",
+        "column",
+        "structural"
+      ]
+    },
+    {
+      "id": "cylinder_pipe",
+      "radius": 0.1,
+      "height": 10.0,
+      "style_tags": [
+        "pipe",
+        "wire",
+        "conduit"
+      ]
+    },
+    {
+      "id": "cylinder_disc",
+      "radius": 2.0,
+      "height": 0.2,
+      "style_tags": [
+        "disc",
+        "coin",
+        "platform"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "trivial",
+    "branching": "none",
+    "iterations": 0
+  }
+}

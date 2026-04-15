@@ -1,0 +1,103 @@
+{
+  "id": "gyroid",
+  "display_name": "Gyroid Surface",
+  "mathematical_definition": "Implicit surface: sin(x)*cos(y) + sin(y)*cos(z) + sin(z)*cos(x) = threshold. Approximated as SDF via abs(value) - thickness.",
+  "dimension": 3,
+  "parameters": {
+    "scale": {
+      "type": "float",
+      "min": 0.1,
+      "max": 20.0,
+      "default": 3.14159
+    },
+    "thickness": {
+      "type": "float",
+      "min": 0.01,
+      "max": 1.0,
+      "default": 0.1
+    },
+    "threshold": {
+      "type": "float",
+      "min": -1.5,
+      "max": 1.5,
+      "default": 0.0
+    }
+  },
+  "visual_keywords": [
+    "lattice",
+    "porous",
+    "organic",
+    "coral",
+    "scaffold",
+    "3d-printed",
+    "minimal surface"
+  ],
+  "good_for": [
+    "organic architecture",
+    "coral structures",
+    "abstract sculpture",
+    "porous materials",
+    "alien infrastructure"
+  ],
+  "art_failure_modes": [
+    "Not an exact SDF \u2014 ray marcher may need extra steps or smaller step size.",
+    "Very thin surfaces cause aliasing and flickering.",
+    "Overscaling makes it look like random noise."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "gyroid_standard",
+      "scale": 3.14159,
+      "thickness": 0.1,
+      "threshold": 0.0,
+      "style_tags": [
+        "lattice",
+        "porous",
+        "standard"
+      ]
+    },
+    {
+      "id": "gyroid_thick",
+      "scale": 3.14159,
+      "thickness": 0.3,
+      "threshold": 0.0,
+      "style_tags": [
+        "chunky",
+        "coral",
+        "spongy"
+      ]
+    },
+    {
+      "id": "gyroid_fine",
+      "scale": 6.28318,
+      "thickness": 0.05,
+      "threshold": 0.0,
+      "style_tags": [
+        "fine lattice",
+        "delicate",
+        "web"
+      ]
+    },
+    {
+      "id": "gyroid_offset",
+      "scale": 3.14159,
+      "thickness": 0.15,
+      "threshold": 0.5,
+      "style_tags": [
+        "biased",
+        "uneven",
+        "organic shift"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "low",
+    "branching": "none",
+    "iterations": 0,
+    "notes": "Approximate SDF \u2014 use 0.7x step multiplier for safety."
+  }
+}

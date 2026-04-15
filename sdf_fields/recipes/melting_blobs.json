@@ -1,0 +1,42 @@
+{
+  "id": "melting_blobs",
+  "description": "Animated metaballs using smooth union of spheres for organic, blobby shapes that merge and separate.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "sphere",
+        "preset": "sphere_unit",
+        "count": "3-5",
+        "animated": true
+      }
+    ],
+    "operations": [
+      {
+        "type": "smooth_union",
+        "preset": "smin_melting"
+      }
+    ]
+  },
+  "style_tags": [
+    "metaball",
+    "organic",
+    "melting",
+    "blobby",
+    "liquid",
+    "gooey",
+    "animated"
+  ],
+  "example_prompts": [
+    "create melting blob metaballs using smooth union of animated spheres",
+    "compose organic gooey shapes that merge and separate over time",
+    "build animated metaball scene with smooth blending radius 0.8"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "orbit",
+      "distance": 5.0
+    },
+    "lighting": "hemisphere + soft shadow",
+    "notes": "Animate sphere positions with sin/cos. Use smooth union k=0.8. Add subsurface-style coloring."
+  }
+}

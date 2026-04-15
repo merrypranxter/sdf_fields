@@ -1,0 +1,144 @@
+{
+  "id": "deformation",
+  "display_name": "Deformation Operations",
+  "description": "Warp the input space to deform shapes: twist, bend, displacement mapping, onion skinning.",
+  "functions": [
+    {
+      "name": "opTwist",
+      "definition": "Rotate XZ coordinates by an angle proportional to Y",
+      "visual": "Twist shape around Y axis"
+    },
+    {
+      "name": "opBend",
+      "definition": "Rotate XY coordinates by an angle proportional to X",
+      "visual": "Bend shape like a banana"
+    },
+    {
+      "name": "opDisplace",
+      "definition": "sdf(p) + displacement_function(p)",
+      "visual": "Add noise or pattern to surface"
+    },
+    {
+      "name": "opOnion",
+      "definition": "abs(sdf(p)) - thickness",
+      "visual": "Hollow out shape into a shell"
+    },
+    {
+      "name": "opRound",
+      "definition": "sdf(p) - radius",
+      "visual": "Round all edges by radius"
+    }
+  ],
+  "parameters": {
+    "twist_rate": {
+      "type": "float",
+      "min": 0.0,
+      "max": 10.0,
+      "typical": [
+        0.5,
+        2.0
+      ]
+    },
+    "bend_amount": {
+      "type": "float",
+      "min": 0.0,
+      "max": 5.0,
+      "typical": [
+        0.3,
+        1.0
+      ]
+    },
+    "displacement_amplitude": {
+      "type": "float",
+      "min": 0.0,
+      "max": 2.0,
+      "typical": [
+        0.05,
+        0.3
+      ]
+    },
+    "onion_thickness": {
+      "type": "float",
+      "min": 0.01,
+      "max": 1.0,
+      "typical": [
+        0.05,
+        0.2
+      ]
+    }
+  },
+  "visual_keywords": [
+    "twisted",
+    "bent",
+    "displaced",
+    "noisy surface",
+    "shell",
+    "hollow",
+    "warped"
+  ],
+  "good_for": [
+    "organic shapes",
+    "terrain from noise",
+    "hollow structures",
+    "twisted columns",
+    "candy shapes"
+  ],
+  "art_failure_modes": [
+    "Twist/bend break exact distance \u2014 reduce step multiplier to 0.5-0.7.",
+    "Large displacement amplitudes make ray marching unreliable.",
+    "Multiple deformations compound error \u2014 limit to 1-2 per shape.",
+    "Onion of non-watertight shapes creates artifacts."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "deform_gentle_twist",
+      "twist_rate": 0.5,
+      "style_tags": [
+        "gentle twist",
+        "barley sugar",
+        "spiral"
+      ]
+    },
+    {
+      "id": "deform_aggressive_twist",
+      "twist_rate": 3.0,
+      "style_tags": [
+        "tornado",
+        "drill",
+        "aggressive spiral"
+      ]
+    },
+    {
+      "id": "deform_noise_surface",
+      "displacement_amplitude": 0.1,
+      "style_tags": [
+        "rough surface",
+        "rocky",
+        "organic skin"
+      ]
+    },
+    {
+      "id": "deform_heavy_displacement",
+      "displacement_amplitude": 0.5,
+      "style_tags": [
+        "alien",
+        "corrupted",
+        "glitched geometry"
+      ]
+    },
+    {
+      "id": "deform_shell",
+      "onion_thickness": 0.08,
+      "style_tags": [
+        "shell",
+        "hollow",
+        "eggshell",
+        "vessel"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/operations.glsl",
+    "wgsl": "shaders/wgsl/operations.wgsl"
+  }
+}

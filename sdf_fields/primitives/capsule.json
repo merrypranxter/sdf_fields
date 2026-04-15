@@ -1,0 +1,96 @@
+{
+  "id": "capsule",
+  "display_name": "Capsule / Line Segment",
+  "mathematical_definition": "Distance from point p to a line segment from a to b, minus radius: length(p - a - clamp(dot(p-a, b-a)/dot(b-a, b-a), 0, 1) * (b-a)) - radius.",
+  "dimension": 3,
+  "parameters": {
+    "point_a": {
+      "type": "vec3",
+      "default": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "point_b": {
+      "type": "vec3",
+      "default": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "radius": {
+      "type": "float",
+      "min": 0.01,
+      "max": 10.0,
+      "default": 0.3
+    }
+  },
+  "visual_keywords": [
+    "pill",
+    "bone",
+    "limb",
+    "connector",
+    "rounded cylinder"
+  ],
+  "good_for": [
+    "bones",
+    "limbs",
+    "connectors",
+    "organic joints",
+    "creature parts"
+  ],
+  "art_failure_modes": [
+    "Looks like a stretched sphere if too short relative to radius."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "capsule_bone",
+      "point_a": [
+        0,
+        -1,
+        0
+      ],
+      "point_b": [
+        0,
+        1,
+        0
+      ],
+      "radius": 0.2,
+      "style_tags": [
+        "bone",
+        "limb",
+        "joint"
+      ]
+    },
+    {
+      "id": "capsule_pill",
+      "point_a": [
+        0,
+        -0.5,
+        0
+      ],
+      "point_b": [
+        0,
+        0.5,
+        0
+      ],
+      "radius": 0.4,
+      "style_tags": [
+        "pill",
+        "capsule",
+        "rounded"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "trivial",
+    "branching": "none",
+    "iterations": 0
+  }
+}

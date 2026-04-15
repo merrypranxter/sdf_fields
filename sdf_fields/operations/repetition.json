@@ -1,0 +1,149 @@
+{
+  "id": "repetition",
+  "display_name": "Space Repetition",
+  "description": "Repeat SDF shapes infinitely or within bounds by folding space with mod/fract operations.",
+  "functions": [
+    {
+      "name": "opRepeat",
+      "definition": "p = mod(p + 0.5*period, period) - 0.5*period",
+      "visual": "Infinite tiling in all axes"
+    },
+    {
+      "name": "opRepeatLimited",
+      "definition": "p = p - period * clamp(round(p/period), -limit, limit)",
+      "visual": "Finite grid of copies"
+    },
+    {
+      "name": "opRepeatPolar",
+      "definition": "Repeat around Y axis using atan2 and angular period",
+      "visual": "Radial array around an axis"
+    },
+    {
+      "name": "opMirror",
+      "definition": "p.x = abs(p.x)",
+      "visual": "Mirror across axis (bilateral symmetry)"
+    }
+  ],
+  "parameters": {
+    "period": {
+      "type": "vec3",
+      "min": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "max": [
+        50,
+        50,
+        50
+      ],
+      "description": "Spacing between copies"
+    },
+    "limit": {
+      "type": "vec3",
+      "min": [
+        0,
+        0,
+        0
+      ],
+      "max": [
+        50,
+        50,
+        50
+      ],
+      "description": "Number of copies per side (limited repetition)"
+    },
+    "count": {
+      "type": "int",
+      "min": 2,
+      "max": 64,
+      "description": "Number of copies (polar repetition)"
+    }
+  },
+  "visual_keywords": [
+    "infinite",
+    "grid",
+    "array",
+    "tiled",
+    "mirrored",
+    "kaleidoscope",
+    "radial"
+  ],
+  "good_for": [
+    "infinite corridors",
+    "crystal arrays",
+    "forests",
+    "city grids",
+    "kaleidoscopes",
+    "mandalas"
+  ],
+  "art_failure_modes": [
+    "Infinite repetition makes bounding impossible \u2014 camera must be inside the repeating cell.",
+    "Very small periods create massive geometry density that kills performance.",
+    "Forgetting to center the repeated cell causes offset artifacts.",
+    "Polar repetition needs careful angle math to avoid gaps."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "repeat_grid",
+      "period": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "style_tags": [
+        "grid",
+        "matrix",
+        "infinite field"
+      ]
+    },
+    {
+      "id": "repeat_corridor",
+      "period": [
+        4.0,
+        100.0,
+        4.0
+      ],
+      "style_tags": [
+        "corridor",
+        "tunnel",
+        "infinite hallway"
+      ]
+    },
+    {
+      "id": "repeat_dense",
+      "period": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "style_tags": [
+        "dense",
+        "packed",
+        "crystalline array"
+      ]
+    },
+    {
+      "id": "repeat_radial_8",
+      "count": 8,
+      "style_tags": [
+        "mandala",
+        "radial",
+        "octagonal symmetry"
+      ]
+    },
+    {
+      "id": "repeat_radial_16",
+      "count": 16,
+      "style_tags": [
+        "kaleidoscope",
+        "fine radial",
+        "flower"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/operations.glsl",
+    "wgsl": "shaders/wgsl/operations.wgsl"
+  }
+}

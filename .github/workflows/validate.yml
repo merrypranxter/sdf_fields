@@ -1,0 +1,33 @@
+name: Validate Pack
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate all JSON files
+        run: |
+          find sdf_fields -name "*.json" | while read f; do
+            if python3 -m json.tool "$f" > /dev/null 2>&1; then
+              echo "  ✓ $f"
+            else
+              echo "  ✗ $f (INVALID JSON)" && exit 1
+            fi
+          done
+      - name: Check index completeness
+        run: |
+          for f in sdf_fields/primitives/*.json; do
+            [ "$(basename $f)" = "index.json" ] && continue
+            id=$(python3 -c "import json; print(json.load(open('$f'))['id'])")
+            grep -q "\"$id\"" sdf_fields/primitives/index.json || { echo "✗ $id missing from primitives index"; exit 1; }
+          done
+          for f in sdf_fields/recipes/*.json; do
+            [ "$(basename $f)" = "index.json" ] && continue
+            id=$(python3 -c "import json; print(json.load(open('$f'))['id'])")
+            grep -q "\"$id\"" sdf_fields/recipes/index.json || { echo "✗ $id missing from recipes index"; exit 1; }
+          done
+          echo "All indexes complete"

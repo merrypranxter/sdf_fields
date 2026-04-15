@@ -1,0 +1,47 @@
+{
+  "id": "alien_eggs",
+  "description": "Cluster of smooth-unioned capsules with noise displacement, like xenomorph egg sacs or fungal pods.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "capsule",
+        "preset": "capsule_pill",
+        "count": "5-8"
+      }
+    ],
+    "operations": [
+      {
+        "type": "smooth_union",
+        "preset": "smin_organic"
+      },
+      {
+        "type": "displacement",
+        "preset": "deform_noise_surface",
+        "source": "noise_fields/simplex"
+      }
+    ]
+  },
+  "style_tags": [
+    "alien",
+    "eggs",
+    "organic",
+    "fungal",
+    "pods",
+    "biological",
+    "clustered",
+    "horror"
+  ],
+  "example_prompts": [
+    "create alien egg cluster using smooth-unioned capsules with noise displacement",
+    "build organic fungal pod formation with subtle surface texture",
+    "compose biological horror egg sacs using smooth blending and simplex displacement"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "low angle",
+      "distance": 3.0
+    },
+    "lighting": "rim light + subsurface",
+    "notes": "Noise displacement amplitude 0.05-0.1. Smooth union k=0.3. Slimy green-teal palette."
+  }
+}

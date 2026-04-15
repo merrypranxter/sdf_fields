@@ -1,0 +1,80 @@
+{
+  "id": "torus",
+  "display_name": "Torus",
+  "mathematical_definition": "Distance from point p to a torus with major radius R and tube radius r: length(vec2(length(p.xz) - R, p.y)) - r.",
+  "dimension": 3,
+  "parameters": {
+    "major_radius": {
+      "type": "float",
+      "min": 0.1,
+      "max": 50.0,
+      "default": 1.0
+    },
+    "tube_radius": {
+      "type": "float",
+      "min": 0.01,
+      "max": 10.0,
+      "default": 0.3
+    }
+  },
+  "visual_keywords": [
+    "ring",
+    "donut",
+    "loop",
+    "portal",
+    "band"
+  ],
+  "good_for": [
+    "rings",
+    "portals",
+    "chains",
+    "abstract sculptures",
+    "orbital paths"
+  ],
+  "art_failure_modes": [
+    "Thin tubes (small tube_radius) can miss ray marching steps.",
+    "Single torus looks simple \u2014 use repetition or boolean ops."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "torus_ring",
+      "major_radius": 1.0,
+      "tube_radius": 0.25,
+      "style_tags": [
+        "ring",
+        "band",
+        "loop"
+      ]
+    },
+    {
+      "id": "torus_fat",
+      "major_radius": 0.8,
+      "tube_radius": 0.5,
+      "style_tags": [
+        "donut",
+        "chunky",
+        "inflated"
+      ]
+    },
+    {
+      "id": "torus_thin",
+      "major_radius": 2.0,
+      "tube_radius": 0.05,
+      "style_tags": [
+        "wire",
+        "orbit",
+        "halo",
+        "thin ring"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "trivial",
+    "branching": "none",
+    "iterations": 0
+  }
+}

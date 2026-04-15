@@ -1,0 +1,119 @@
+{
+  "id": "box",
+  "display_name": "Box / Rounded Box",
+  "mathematical_definition": "Distance from point p to an axis-aligned box: length(max(abs(p) - halfSize, 0.0)) + min(max(abs(p).x - halfSize.x, max(abs(p).y - halfSize.y, abs(p).z - halfSize.z)), 0.0). Optional rounding subtracts a radius.",
+  "dimension": 3,
+  "parameters": {
+    "half_size": {
+      "type": "vec3",
+      "min": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "max": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "default": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "rounding": {
+      "type": "float",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    }
+  },
+  "visual_keywords": [
+    "cubic",
+    "architectural",
+    "hard",
+    "angular",
+    "monolith",
+    "block"
+  ],
+  "good_for": [
+    "architecture",
+    "rooms",
+    "monoliths",
+    "subtraction targets",
+    "frames"
+  ],
+  "art_failure_modes": [
+    "Sharp edges alias badly without anti-aliasing or soft shadows.",
+    "Axis-aligned boxes look generic \u2014 rotate or round for interest."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "box_cube",
+      "half_size": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rounding": 0.0,
+      "style_tags": [
+        "cube",
+        "sharp",
+        "minimal"
+      ]
+    },
+    {
+      "id": "box_rounded",
+      "half_size": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rounding": 0.15,
+      "style_tags": [
+        "soft cube",
+        "rounded",
+        "toy"
+      ]
+    },
+    {
+      "id": "box_slab",
+      "half_size": [
+        3.0,
+        0.1,
+        2.0
+      ],
+      "rounding": 0.02,
+      "style_tags": [
+        "slab",
+        "platform",
+        "floor",
+        "thin"
+      ]
+    },
+    {
+      "id": "box_pillar",
+      "half_size": [
+        0.3,
+        4.0,
+        0.3
+      ],
+      "rounding": 0.05,
+      "style_tags": [
+        "pillar",
+        "column",
+        "tall"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "trivial",
+    "branching": "none",
+    "iterations": 0
+  }
+}

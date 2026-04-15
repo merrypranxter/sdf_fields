@@ -1,0 +1,54 @@
+{
+  "id": "terrain_march",
+  "description": "Ray marched terrain using a height field driven by noise_fields FBM, with fog and sky gradient.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "plane",
+        "preset": "plane_ground"
+      }
+    ],
+    "operations": [
+      {
+        "type": "displacement",
+        "source": "noise_fields/fbm",
+        "preset": "fbm_soft_clouds",
+        "amplitude": 3.0,
+        "notes": "Displace ground plane with FBM for terrain"
+      }
+    ],
+    "post_process": {
+      "fog": {
+        "color": [
+          0.7,
+          0.8,
+          0.9
+        ],
+        "density": 0.03
+      },
+      "sky": "gradient based on ray direction Y"
+    }
+  },
+  "style_tags": [
+    "terrain",
+    "landscape",
+    "heightfield",
+    "fog",
+    "mountains",
+    "procedural landscape",
+    "atmospheric"
+  ],
+  "example_prompts": [
+    "create ray marched terrain using FBM noise displacement on a ground plane",
+    "build procedural mountain landscape with fog and sky gradient",
+    "compose atmospheric terrain scene using noise_fields FBM for height"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "elevated",
+      "notes": "Camera above terrain looking toward horizon"
+    },
+    "lighting": "directional sun + hemisphere sky + fog",
+    "notes": "terrainSDF(p) = p.y - fbm(p.xz * 0.1) * 3.0. Use soft shadows. Exponential fog."
+  }
+}

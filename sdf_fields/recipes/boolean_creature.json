@@ -1,0 +1,68 @@
+{
+  "id": "boolean_creature",
+  "description": "Abstract creature assembled from smooth-unioned primitives (spheres, capsules, tori) \u2014 like a digital organism.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "sphere",
+        "role": "body",
+        "radius": 1.0
+      },
+      {
+        "type": "capsule",
+        "role": "limbs",
+        "count": 4
+      },
+      {
+        "type": "torus",
+        "role": "collar",
+        "major_radius": 0.8,
+        "tube_radius": 0.15
+      },
+      {
+        "type": "sphere",
+        "role": "eyes",
+        "radius": 0.2,
+        "count": 2
+      }
+    ],
+    "operations": [
+      {
+        "type": "smooth_union",
+        "preset": "smin_organic",
+        "notes": "Blend body + limbs"
+      },
+      {
+        "type": "smooth_subtraction",
+        "notes": "Carve eye sockets"
+      },
+      {
+        "type": "displacement",
+        "source": "noise_fields/simplex",
+        "amplitude": 0.03
+      }
+    ]
+  },
+  "style_tags": [
+    "creature",
+    "organic",
+    "digital organism",
+    "assembled",
+    "abstract life",
+    "character",
+    "biomechanical"
+  ],
+  "example_prompts": [
+    "create abstract digital creature from smooth-unioned geometric primitives",
+    "build organic character by blending spheres, capsules, and tori with smooth union",
+    "compose biomechanical organism using SDF boolean sculpture"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "portrait",
+      "distance": 4.0
+    },
+    "lighting": "rim + fill + subsurface approximation",
+    "notes": "Smooth union k=0.3 for body+limbs. Subtle noise displacement for skin texture."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "octahedron",
+  "display_name": "Octahedron",
+  "mathematical_definition": "Exact SDF to a regular octahedron: computed via folding absolute coordinates and solving the plane distance. Parameter s controls edge length.",
+  "dimension": 3,
+  "parameters": {
+    "size": {
+      "type": "float",
+      "min": 0.01,
+      "max": 50.0,
+      "default": 1.0
+    }
+  },
+  "visual_keywords": [
+    "diamond",
+    "crystal",
+    "gem",
+    "faceted",
+    "angular",
+    "sharp"
+  ],
+  "good_for": [
+    "crystals",
+    "gems",
+    "abstract geometry",
+    "faceted forms",
+    "platonic solids"
+  ],
+  "art_failure_modes": [
+    "Sharp edges need good normal computation for lighting.",
+    "Looks too 'clean' without displacement or context."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "octahedron_gem",
+      "size": 1.0,
+      "style_tags": [
+        "gem",
+        "crystal",
+        "diamond"
+      ]
+    },
+    {
+      "id": "octahedron_tiny",
+      "size": 0.15,
+      "style_tags": [
+        "particle",
+        "shard",
+        "fragment"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "low",
+    "branching": "none",
+    "iterations": 0
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "infinite_columns",
+  "description": "Infinite grid of twisted, rounded columns stretching into fog. Brutalist architecture meets the void.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "cylinder",
+        "preset": "cylinder_pillar"
+      }
+    ],
+    "operations": [
+      {
+        "type": "repetition",
+        "preset": "repeat_grid"
+      },
+      {
+        "type": "deformation",
+        "preset": "deform_gentle_twist"
+      },
+      {
+        "type": "round",
+        "radius": 0.05
+      }
+    ]
+  },
+  "style_tags": [
+    "infinite",
+    "columns",
+    "brutalist",
+    "fog",
+    "architectural",
+    "monumental",
+    "repeating"
+  ],
+  "example_prompts": [
+    "create infinite grid of twisted columns disappearing into fog",
+    "build brutalist architecture scene with repeating rounded pillars",
+    "compose infinite column array with gentle twist and exponential fog"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "perspective",
+      "notes": "Camera at eye level between columns"
+    },
+    "lighting": "directional + fog",
+    "notes": "Use exponential fog density 0.1. Repeat period [4, 100, 4]. Twist rate 0.3."
+  }
+}

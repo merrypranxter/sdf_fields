@@ -1,0 +1,13 @@
+{
+  "id": "sdf_fields",
+  "name": "Signed Distance Functions & Geometry Pack",
+  "version": "0.1.0",
+  "description": "Structured knowledge about SDF primitives, boolean operations, space manipulation, and ray marching for generative shader art. Designed for RepoScripter to compose 3D scenes from semantic descriptions.",
+  "tags": ["sdf", "raymarching", "shaders", "glsl", "wgsl", "geometry", "procedural", "reposcripter"],
+  "primitives_index": "primitives/index.json",
+  "operations_index": "operations/index.json",
+  "recipes_index": "recipes/index.json",
+  "shader_languages": ["glsl", "wgsl"],
+  "companion_packs": ["noise_fields"],
+  "license": "MIT"
+}

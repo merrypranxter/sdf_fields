@@ -1,0 +1,44 @@
+{
+  "id": "boolean",
+  "display_name": "Boolean Operations",
+  "description": "Combine two SDF shapes using hard boolean logic: union (min), intersection (max), subtraction (max of A with negated B).",
+  "functions": [
+    {
+      "name": "opUnion",
+      "definition": "min(d1, d2)",
+      "visual": "Combines both shapes"
+    },
+    {
+      "name": "opIntersection",
+      "definition": "max(d1, d2)",
+      "visual": "Only where both shapes overlap"
+    },
+    {
+      "name": "opSubtraction",
+      "definition": "max(-d1, d2)",
+      "visual": "Cuts shape d1 out of shape d2"
+    }
+  ],
+  "visual_keywords": [
+    "combine",
+    "cut",
+    "intersect",
+    "carve",
+    "merge"
+  ],
+  "good_for": [
+    "architectural cutouts",
+    "CSG modeling",
+    "hard-edged geometry",
+    "Boolean sculpture"
+  ],
+  "art_failure_modes": [
+    "Hard edges at boolean boundaries \u2014 use smooth variants for organic looks.",
+    "Subtraction can create thin shells that alias badly.",
+    "Union of overlapping shapes wastes ray marching steps inside the overlap."
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/operations.glsl",
+    "wgsl": "shaders/wgsl/operations.wgsl"
+  }
+}

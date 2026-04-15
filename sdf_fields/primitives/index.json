@@ -1,0 +1,13 @@
+{
+  "primitives": [
+    { "id": "sphere", "path": "primitives/sphere.json" },
+    { "id": "box", "path": "primitives/box.json" },
+    { "id": "torus", "path": "primitives/torus.json" },
+    { "id": "cylinder", "path": "primitives/cylinder.json" },
+    { "id": "capsule", "path": "primitives/capsule.json" },
+    { "id": "plane", "path": "primitives/plane.json" },
+    { "id": "gyroid", "path": "primitives/gyroid.json" },
+    { "id": "octahedron", "path": "primitives/octahedron.json" },
+    { "id": "mandelbulb", "path": "primitives/mandelbulb.json" }
+  ]
+}

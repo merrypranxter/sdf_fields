@@ -1,0 +1,49 @@
+{
+  "id": "gyroid_sculpture",
+  "description": "Gyroid minimal surface as an abstract sculpture, optionally bounded by a sphere or box for a finite object.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "gyroid",
+        "preset": "gyroid_thick"
+      }
+    ],
+    "operations": [
+      {
+        "type": "intersection",
+        "with": {
+          "type": "sphere",
+          "radius": 2.0
+        },
+        "notes": "Bound the infinite gyroid"
+      },
+      {
+        "type": "round",
+        "radius": 0.02
+      }
+    ]
+  },
+  "style_tags": [
+    "gyroid",
+    "minimal surface",
+    "sculpture",
+    "porous",
+    "3d-print",
+    "abstract",
+    "lattice",
+    "coral"
+  ],
+  "example_prompts": [
+    "create gyroid sculpture bounded by a sphere with rounded edges",
+    "build abstract porous minimal surface object for 3D printing aesthetic",
+    "compose gyroid lattice intersected with a sphere for a finite coral sculpture"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "orbit",
+      "distance": 4.0
+    },
+    "lighting": "3-point studio + AO",
+    "notes": "Use step multiplier 0.7 for gyroid. Bound radius 2.0. Thickness 0.3."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "transform",
+  "display_name": "Spatial Transforms",
+  "description": "Transform the input point before evaluating the SDF: translate, rotate, scale, elongate.",
+  "functions": [
+    {
+      "name": "opTranslate",
+      "definition": "p = p - offset",
+      "visual": "Move shape to offset position"
+    },
+    {
+      "name": "opRotateX/Y/Z",
+      "definition": "Apply rotation matrix to p around given axis",
+      "visual": "Rotate shape"
+    },
+    {
+      "name": "opScale",
+      "definition": "sdf(p/s) * s",
+      "visual": "Uniformly scale shape"
+    },
+    {
+      "name": "opElongate",
+      "definition": "Clamp coordinates to stretch shape along axes",
+      "visual": "Stretch shape without distorting ends"
+    }
+  ],
+  "visual_keywords": [
+    "moved",
+    "rotated",
+    "scaled",
+    "stretched",
+    "placed",
+    "oriented"
+  ],
+  "good_for": [
+    "scene composition",
+    "placing objects",
+    "animating shapes",
+    "creating elongated forms"
+  ],
+  "art_failure_modes": [
+    "Non-uniform scale breaks SDF distance guarantees \u2014 use elongation instead.",
+    "Forgetting to multiply by scale factor after division corrupts distance field.",
+    "Rotation matrices must be orthogonal or distance estimates break."
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/operations.glsl",
+    "wgsl": "shaders/wgsl/operations.wgsl"
+  }
+}

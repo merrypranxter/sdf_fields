@@ -1,0 +1,53 @@
+{
+  "id": "fractal_cathedral",
+  "description": "Recursive space folding creating cathedral-like interiors with infinite self-similar arches and vaults.",
+  "sdf_graph": {
+    "primitives": [
+      {
+        "type": "box",
+        "preset": "box_cube"
+      }
+    ],
+    "operations": [
+      {
+        "type": "repetition",
+        "method": "fold_and_repeat",
+        "notes": "Use abs() folding + mod() for fractal repetition"
+      },
+      {
+        "type": "subtraction",
+        "target": "sphere",
+        "notes": "Carve spherical vaults from box structure"
+      },
+      {
+        "type": "mirror",
+        "axes": [
+          "x",
+          "z"
+        ]
+      }
+    ]
+  },
+  "style_tags": [
+    "fractal",
+    "cathedral",
+    "recursive",
+    "architectural",
+    "gothic",
+    "infinite interior",
+    "vaulted"
+  ],
+  "example_prompts": [
+    "create fractal cathedral interior using recursive space folding",
+    "build infinite self-similar gothic architecture with vaulted ceilings",
+    "compose recursive architectural space using fold and repeat operations"
+  ],
+  "screenshot_metadata": {
+    "camera": {
+      "type": "interior",
+      "notes": "Camera inside the structure looking up"
+    },
+    "lighting": "ambient occlusion heavy + point light",
+    "notes": "3-4 fold iterations. Use abs() on multiple axes between iterations. AO is critical for depth."
+  }
+}

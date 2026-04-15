@@ -1,0 +1,95 @@
+{
+  "id": "smooth_boolean",
+  "display_name": "Smooth Boolean Operations",
+  "description": "Combine SDFs with smooth blending using polynomial smooth min/max. The blending radius k controls how much shapes melt into each other.",
+  "functions": [
+    {
+      "name": "opSmoothUnion",
+      "definition": "Polynomial smooth min with blend radius k",
+      "visual": "Shapes melt together at proximity k"
+    },
+    {
+      "name": "opSmoothIntersection",
+      "definition": "Polynomial smooth max with blend radius k",
+      "visual": "Smooth intersection with rounded inner corners"
+    },
+    {
+      "name": "opSmoothSubtraction",
+      "definition": "Smooth max of negated d1 and d2 with blend k",
+      "visual": "Soft carving with rounded excavation edges"
+    }
+  ],
+  "parameters": {
+    "k": {
+      "type": "float",
+      "min": 0.01,
+      "max": 2.0,
+      "typical": [
+        0.1,
+        0.5
+      ],
+      "description": "Blend radius \u2014 larger = more melting"
+    }
+  },
+  "visual_keywords": [
+    "melting",
+    "organic",
+    "blobby",
+    "smooth",
+    "merged",
+    "metaball"
+  ],
+  "good_for": [
+    "metaballs",
+    "organic creatures",
+    "melting shapes",
+    "smooth transitions",
+    "creature limbs"
+  ],
+  "art_failure_modes": [
+    "Very large k values destroy the identity of individual shapes.",
+    "Small k makes blending invisible \u2014 looks like hard boolean.",
+    "Smooth subtraction with large k can create weird concavities."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "smin_subtle",
+      "k": 0.1,
+      "style_tags": [
+        "subtle blend",
+        "barely touching"
+      ]
+    },
+    {
+      "id": "smin_organic",
+      "k": 0.3,
+      "style_tags": [
+        "organic",
+        "natural blend",
+        "creature"
+      ]
+    },
+    {
+      "id": "smin_melting",
+      "k": 0.8,
+      "style_tags": [
+        "melting",
+        "blobby",
+        "metaball"
+      ]
+    },
+    {
+      "id": "smin_extreme",
+      "k": 1.5,
+      "style_tags": [
+        "gooey",
+        "amorphous",
+        "liquid merge"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/operations.glsl",
+    "wgsl": "shaders/wgsl/operations.wgsl"
+  }
+}

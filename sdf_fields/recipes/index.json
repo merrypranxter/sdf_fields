@@ -1,0 +1,12 @@
+{
+  "recipes": [
+    { "id": "melting_blobs", "path": "recipes/melting_blobs.json" },
+    { "id": "infinite_columns", "path": "recipes/infinite_columns.json" },
+    { "id": "fractal_cathedral", "path": "recipes/fractal_cathedral.json" },
+    { "id": "alien_eggs", "path": "recipes/alien_eggs.json" },
+    { "id": "gyroid_sculpture", "path": "recipes/gyroid_sculpture.json" },
+    { "id": "mirror_room", "path": "recipes/mirror_room.json" },
+    { "id": "boolean_creature", "path": "recipes/boolean_creature.json" },
+    { "id": "terrain_march", "path": "recipes/terrain_march.json" }
+  ]
+}

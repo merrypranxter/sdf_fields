@@ -1,0 +1,75 @@
+{
+  "id": "plane",
+  "display_name": "Infinite Plane",
+  "mathematical_definition": "Signed distance from point p to a plane with normal n at height h: dot(p, normalize(n)) + h.",
+  "dimension": 3,
+  "parameters": {
+    "normal": {
+      "type": "vec3",
+      "default": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "height": {
+      "type": "float",
+      "default": 0.0
+    }
+  },
+  "visual_keywords": [
+    "ground",
+    "floor",
+    "wall",
+    "infinite",
+    "flat"
+  ],
+  "good_for": [
+    "ground planes",
+    "walls",
+    "water surfaces",
+    "mirrors",
+    "clipping planes"
+  ],
+  "art_failure_modes": [
+    "Infinite planes need displacement or texture to not look like a void.",
+    "Can dominate the scene if not combined with other geometry."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "plane_ground",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "height": 0.0,
+      "style_tags": [
+        "ground",
+        "floor"
+      ]
+    },
+    {
+      "id": "plane_wall",
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "height": -5.0,
+      "style_tags": [
+        "wall",
+        "backdrop"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "trivial",
+    "branching": "none",
+    "iterations": 0
+  }
+}

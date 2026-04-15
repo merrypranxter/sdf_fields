@@ -1,0 +1,70 @@
+{
+  "id": "sphere",
+  "display_name": "Sphere",
+  "mathematical_definition": "Distance from point p to the surface of a sphere centered at origin: length(p) - radius.",
+  "dimension": 3,
+  "parameters": {
+    "radius": {
+      "type": "float",
+      "min": 0.01,
+      "max": 100.0,
+      "default": 1.0
+    }
+  },
+  "visual_keywords": [
+    "round",
+    "organic",
+    "smooth",
+    "blob",
+    "orb",
+    "planet"
+  ],
+  "good_for": [
+    "base shapes",
+    "metaballs",
+    "smooth blending",
+    "planets",
+    "cells"
+  ],
+  "art_failure_modes": [
+    "Boring on its own \u2014 needs displacement, repetition, or boolean ops to be interesting.",
+    "Perfect smoothness can look synthetic without surface detail."
+  ],
+  "canonical_parameter_sets": [
+    {
+      "id": "sphere_unit",
+      "radius": 1.0,
+      "style_tags": [
+        "standard",
+        "unit sphere"
+      ]
+    },
+    {
+      "id": "sphere_tiny",
+      "radius": 0.1,
+      "style_tags": [
+        "particle",
+        "dot",
+        "seed"
+      ]
+    },
+    {
+      "id": "sphere_massive",
+      "radius": 50.0,
+      "style_tags": [
+        "planet",
+        "world",
+        "ground plane approximation"
+      ]
+    }
+  ],
+  "shader_chunks": {
+    "glsl": "shaders/glsl/primitives.glsl",
+    "wgsl": "shaders/wgsl/primitives.wgsl"
+  },
+  "complexity_notes": {
+    "relative_cost": "trivial",
+    "branching": "none",
+    "iterations": 0
+  }
+}
